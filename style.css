@@ -1,0 +1,596 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: right;
+}
+
+.header img {
+    max-width: 50px;
+    height: auto;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.header h1 {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    height: 50px;
+    background-color: #ebe5e5;
+    overflow: auto; /* Changed to auto for scrollable navbar */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Allow navbar items to wrap onto multiple lines */
+}
+
+.navbar-button {
+    border: none;
+    display: inline-block;
+    position: relative;
+    padding: 0.7em 1.5em; /* Adjusted padding for better fit */
+    font-size: 16px; /* Adjusted font size */
+    background: transparent;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    color: royalblue;
+    z-index: 1;
+    font-family: inherit;
+    font-weight: 500;
+    margin: 5px; /* Increased margin for spacing */
+}
+
+.navbar-button span {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: -1;
+    border: 4px solid royalblue;
+}
+
+.navbar-button span::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 8%;
+    height: 500%;
+    background: var(--lightgray);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-60deg);
+    transition: all 0.3s;
+}
+
+.navbar-button:hover span::before {
+    transform: translate(-50%, -50%) rotate(-90deg);
+    width: 100%;
+    background: royalblue;
+}
+
+.navbar-button:hover {
+    color: white;
+}
+
+.navbar-button:active span::before {
+    background: #2751cd;
+}
+
+.searchBox {
+    display: flex;
+    align-items: center;
+    background: #2f3640;
+    border-radius: 30px;
+    margin-left: 10px; /* Reduced margin for smaller screens */
+    height: 35px;
+    overflow: hidden;
+}
+
+.searchButton {
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: linear-gradient(90deg, #2AF598 0%, #009EFD 100%);
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.searchInput {
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    padding: 0 10px; /* Reduced padding */
+    height: 100%;
+}
+
+.content {
+    padding: 20px;
+}
+
+.content img {
+    max-width: 100%; /* Make images responsive */
+    height: auto;
+}
+
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .navbar {
+        height: auto; /* Allow navbar to expand vertically */
+        flex-direction: column; /* Stack navbar items vertically */
+        align-items: stretch; /* Stretch navbar items to fill width */
+    }
+
+    .navbar-button, .searchBox {
+        width: 100%;
+        margin: 5px 0; /* Adjust margins for stacked items */
+    }
+
+    .navbar-button {
+        text-align: center;
+    }
+
+    .searchBox {
+        margin-left: 0;
+    }
+
+    .searchInput {
+        width: calc(100% - 70px); /* Adjust input width to fit with button */
+    }
+}
+
+.notice-box {
+    background-color: #fff;
+    border: 2px solid #ffdb58;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notice-box h2 {
+    color: #ff8c00;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.reviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.review-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-card h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.review-card p {
+    color: #555;
+}
+.admission-form-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.teacher-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding: 20px;
+}
+.teacher-card {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.teacher-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover; /* Ensure image fills the circle */
+    margin-bottom: 10px;
+    border: 2px solid #007bff;
+}
+.teacher-photo.male {
+    background-image: url('https://via.placeholder.com/150?text=Male'); /* Placeholder for male */
+    background-size: cover;
+}
+.teacher-photo.female {
+    background-image: url('https://via.placeholder.com/150?text=Female'); /* Placeholder for female */
+    background-size: cover;
+}
+.teacher-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+.teacher-info {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 5px;
+}
+.teacher-service {
+    font-style: italic;
+    color: #777;
+}
+
+.admission-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.admission-section h2 {
+    margin-bottom: 15px;
+    color: #333;
+}
+.admission-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+.admission-section p {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+.admission-form-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.admission-form-links a {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 250px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+.admission-form-links a:hover {
+    background-color: #0056b3;
+}
+.fill-form-button {
+    background-color: #007bff;
+}
+.download-form-button {
+    background-color: #28a745;
+}
+
+/* From Uiverse.io by adamgiebl */
+.cssbuttons-io-button {
+    display: flex; /* Enable flexbox for centering */
+    align-items: center;  /* Vertically center content */
+    justify-content: center; /* Horizontally center content */
+    font-family: inherit;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 0.8em 1.5em 0.8em 1.2em;
+    color: white;
+    background: #ad5389;
+    background: linear-gradient(
+        0deg,
+        rgba(77, 54, 208, 1) 0%,
+        rgba(132, 116, 254, 1) 100%
+    );
+    border: none;
+    box-shadow: 0 0.7em 1.5em -0.5em #4d36d0be;
+    letter-spacing: 0.05em;
+    border-radius: 20em;
+    width: 280px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.cssbuttons-io-button svg {
+    margin-right: 8px;
+    height: 24px;
+    width: 24px;
+}
+
+.cssbuttons-io-button span{
+     line-height: 1;
+}
+
+.cssbuttons-io-button:hover {
+    box-shadow: 0 0.5em 1.5em -0.5em #4d36d0be;
+}
+
+.cssbuttons-io-button:active {
+    box-shadow: 0 0.3em 1em -0.5em #4d36d0be;
+}
+
+/* From Uiverse.io by Rauliqbal */
+.custom-button {
+    cursor: pointer;
+    background: linear-gradient(to bottom, #6366f1, #4f46e5);
+    box-shadow: 0px 4px 32px 0 rgba(99, 102, 241, .70);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid #6b7280;
+    color: #fff;
+    font-weight: 500;
+    width: 280px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.custom-button span {
+    position: relative;
+    z-index: 2;
+}
+
+.custom-button::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex; /* Also use flexbox for the moving text */
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-100%);
+    transition: transform 1.125s ease cubic-bezier(0.19, 1, 0.22, 1);
+    color: #fff;
+    white-space: nowrap;
+}
+
+.custom-button:hover::after {
+    transform: translateY(0);
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto, auto);
+    gap: 10px;
+    padding: 20px;
+}
+.gallery-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.gallery-item img, .gallery-item video, .gallery-item iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.gallery-item video {
+    width: 100%;
+}
+.gallery-item iframe{
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16/9;
+}
+.gallery-item-title {
+    text-align: center;
+    padding: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+
+
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .header h1 {
+        font-size: 1.2em; /* Reduce font size on very small screens */
+    }
+}
+        .reviews-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .review-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .review-card h3 {
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .review-card .designation {
+            color: #555;
+            font-style: italic;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .review-card p {
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .stars {
+            color: #ff8c00;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            margin: 0 5px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .social-links a:hover {
+            color: #0056b3;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .review-card {
+                width: 100%;
+            }
+        }
+
+        .reviews-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .review-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .reviewer-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 2px solid #007bff;
+        }
+
+        .review-card h3 {
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+
+        .review-card .designation {
+            color: #555;
+            font-style: italic;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .review-card p {
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .stars {
+            color: #ff8c00;
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            margin: 0 5px;
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .social-links a:hover {
+            color: #0056b3;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .review-card {
+                width: 100%;
+            }
+
+            .reviewer-photo {
+                width: 80px;
+                height: 80px;
+            }
+        }
